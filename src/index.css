@@ -33,18 +33,25 @@
 	margin: 40px auto;
 	padding: 20px;
 }
+.text-special {
+	font-size: 25px;
+	font-weight: 600;
+}
 
 /* blog previews / list */
 .blog-preview {
-	padding: 10px 16px;
+	padding: 15px 16px;
 	margin: 20px 0;
 	border-radius: 10px;
+	background-color: #b0e9ff;
 }
 .blog-preview:hover {
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
-	background-color: #b0e9ff;
+	background-color: #59caf7;
+	max-width: 700px;
 	transition-timing-function: ease-in-out;
-	transition-duration: 800ms;
+	transition-duration: 400ms;
+	cursor: pointer;
 }
 .blog-preview h2 {
 	font-size: 20px;

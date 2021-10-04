@@ -1,21 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
-	const [blogs, setBlogs] = useState([
-		{ title: "My new website", body: "lorem ipsum...", author: "Paolo", id: 1 },
-		{ title: "Welcome party!", body: "lorem ipsum...", author: "Andrea", id: 2 },
-		{ title: "Web dev top tips", body: "lorem ipsum...", author: "Paolo", id: 3 },
-	]);
+	const [blogs, setBlogs] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState(null);
 
-	const handleDelete = (id) => {
-		const newBlogs = blogs.filter((blog) => blog.id !== id);
-		setBlogs(newBlogs);
-	};
+	useEffect(() => {
+		setTimeout(() => {
+			fetch("http://localhost:8000/blogs")
+				.then((res) => {
+					if (!res.ok) {
+						throw Error("Could not fetch the data from that resource");
+					}
+					return res.json();
+				})
+				.then((data) => {
+					setBlogs(data);
+					setIsLoading(false);
+					setError(null);
+				})
+				.catch((err) => {
+					setIsLoading(false);
+					setError(err.message);
+				});
+		}, 1000);
+	}, []);
 
 	return (
 		<div className="home">
-			<BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
+			{error && <div className="text-special">{error}</div>}
+			{isLoading && <div className="text-special">Loading...</div>}
+			{blogs && <BlogList blogs={blogs} title="All Blogs" />}
 		</div>
 	);
 };

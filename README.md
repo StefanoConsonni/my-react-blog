@@ -8,7 +8,7 @@
 
 ## General info
 
-I created this Blog project to practice my React and CSS skills.
+I am creating this Blog project to practice my React and CSS skills.
 
 ## Technologies
 

@@ -26,6 +26,7 @@ To run this project, install the dependencies locally using npm:
 ```
 $ cd my-react-blog
 $ npm install
+npx json-server --watch data/db.json --port 8000
 $ npm start
 open the app using the local development server: http://localhost:3000
 

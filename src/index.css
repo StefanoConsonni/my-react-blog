@@ -83,7 +83,7 @@
 }
 /* create new blog form */
 .create {
-	max-width: 400px;
+	max-width: 450px;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -106,6 +106,9 @@
 	border-radius: 6px;
 	box-sizing: border-box;
 	display: block;
+}
+.create textarea {
+	height: 140px;
 }
 .create button {
 	background: #f1356d;

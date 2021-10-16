@@ -1,21 +1,45 @@
+import { useState } from "react";
+
 const Create = () => {
+	const [title, setTitle] = useState("");
+	const [body, setBody] = useState("");
+	const [author, setAuthor] = useState("Andrea");
+	const [isLoading, setIsLoading] = useState(false);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const blog = { title, body, author };
+
+		setIsLoading(true);
+
+		fetch("http://localhost:8000/blogs", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(blog),
+		}).then(() => {
+			console.log("new blog added");
+			setIsLoading(false);
+		});
+	};
+
 	return (
 		<div className="create">
 			<h2>Add a New Blog</h2>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<label>Blog title:</label>
-				<input type="text" required />
+				<input required type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
 				<label>Blog body:</label>
-				<textarea required></textarea>
+				<textarea required onChange={(e) => setBody(e.target.value)}></textarea>
 				<label>Blog author:</label>
-				<select>
+				<select value={author} onChange={(e) => setAuthor(e.target.value)}>
 					<option value="andrea">Andrea</option>
 					<option value="barbara">Barbara</option>
 					<option value="francesco">Francesco</option>
 					<option value="luca">Luca</option>
 					<option value="sabrina">Sabrina</option>
 				</select>
-				<button>Add Blog</button>
+				{!isLoading && <button>Add Blog</button>}
+				{isLoading && <button disabled>Adding Blog...</button>}
 			</form>
 		</div>
 	);

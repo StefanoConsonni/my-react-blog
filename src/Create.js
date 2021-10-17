@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 const Create = () => {
 	const [title, setTitle] = useState("");
 	const [body, setBody] = useState("");
 	const [author, setAuthor] = useState("Andrea");
 	const [isLoading, setIsLoading] = useState(false);
+	const history = useHistory();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -17,8 +19,8 @@ const Create = () => {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(blog),
 		}).then(() => {
-			console.log("new blog added");
 			setIsLoading(false);
+			history.push("/");
 		});
 	};
 

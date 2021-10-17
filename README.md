@@ -8,14 +8,15 @@
 
 ## General info
 
-I am creating this Blog project to practice my React and CSS skills.
+I created this Blog project to practice my React and CSS skills.
 
 ## Technologies
 
 This project is created with:
 
 - React: 17.0.2
-- HTML
+- React Router: 5.3.0
+- JSON Server
 - CSS
 - Javascript
 

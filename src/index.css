@@ -121,3 +121,8 @@
 	font-size: 16px;
 	cursor: pointer;
 }
+/* Not Found Page */
+.not-found h2,
+.not-found p {
+	margin-bottom: 20px;
+}
